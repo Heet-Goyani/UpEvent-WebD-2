@@ -2,10 +2,15 @@
 
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import User from "../../db/models/users.js";
 import dotenv from "dotenv";
-
 dotenv.config();
+
+// Controller imports
+
+// Middleware imports
+
+// Model imports
+import User from "../../db/models/users.js";
 
 // Login tested. setter error removed.
 export const login = async (req, res) => {

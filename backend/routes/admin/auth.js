@@ -1,8 +1,14 @@
-import {Router} from 'express';
-import {login, register} from '../../controllers/admin/auth.js';
+import { Router } from "express";
 const router = Router();
 
-router.post('/login', login);
-router.post('/register', register);
+// Controller imports
+import { login, register } from "../../controllers/admin/auth.js";
+
+// Middleware imports
+
+// Model imports
+
+router.post("/login", login);
+router.post("/register", register);
 
 export default router;

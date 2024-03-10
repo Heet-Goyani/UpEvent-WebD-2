@@ -1,3 +1,8 @@
+// Controller imports
+
+// Middleware imports
+
+// Model imports
 import Event from "../../db/models/events.js";
 import bookmarkEvent from "../../db/models/bookmarkEvents.js";
 import registerEvent from "../../db/models/registerEvents.js";

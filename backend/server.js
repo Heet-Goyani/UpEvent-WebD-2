@@ -4,45 +4,41 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { sequelize, testConnection } from "./db/connection.js";
 
-// import User from "./db/models/users.js";
+const app = express();
+app.use(bodyParser.json());
+app.use(cors());
+
+dotenv.config();
+
+// Model imports
+import User from "./db/models/users.js";
 import Organiser from "./db/models/organisers.js";
 import Event from "./db/models/events.js";
 import registerEvent from "./db/models/registerEvents.js";
 import bookmarkEvent from "./db/models/bookmarkEvents.js";
 
-dotenv.config();
-
+// Auth imports
 import userRoutes from "./routes/user/auth.js";
 import organiserRoutes from "./routes/organiser/auth.js";
+
+// Event route imports
 import eventListRoutes from "./routes/event/eventList.js";
 
-// import adminRoutes from "./routes/admin/auth.js";
-
-// import eventRoutes from "./routes/event/event.js";
-// import userNotificationRoutes from "./routes/user/notification.js";
-
-// import userFeedbackRoutes from "./routes/user/feedback.js";
+// User route imports
 import userBookmarkRoutes from "./routes/user/bookmarkEvent.js";
-
-const app = express();
-app.use(bodyParser.json());
-
-app.use(cors());
-
 
 // Auth routes
 app.use("/user/auth", userRoutes);
 app.use("/organiser/auth", organiserRoutes);
 // app.use("/admin/auth", adminRoutes);
 
-
 // Event routes
 app.use("/event", eventListRoutes);
 
 // User routes
 app.use("/user", userBookmarkRoutes);
-// app.use("user/registered", userRegisteredRoutes);
-
+// app.use("/user", userRegisteredRoutes);
+// app.use("/user", userRegisteredRoutes);
 
 // organiser routes
 

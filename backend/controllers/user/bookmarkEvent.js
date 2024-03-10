@@ -1,3 +1,8 @@
+// Controller imports
+
+// Middleware imports
+
+// Model imports
 import bookmarkEvent from "../../db/models/bookmarkEvents.js";
 
 const Bookmark = async (req, res) => {

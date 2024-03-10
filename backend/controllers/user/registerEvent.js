@@ -1,3 +1,8 @@
+// Controller imports
+
+// Middleware imports
+
+// Model imports
 import registerEvent from "../../models/registerEvent.js";
 
 const Register = async (req, res) => {
