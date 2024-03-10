@@ -4,6 +4,8 @@ import Organiser from "./organisers.js";
 
 class Event extends Sequelize.Model {}
 
+// Some values are set to allowNull: true for testing purposes. Change them to false later.
+
 Event.init(
   {
     id: {
@@ -22,11 +24,13 @@ Event.init(
     },
     name: {
       type: Sequelize.DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
+      allowNull: true,
     },
     description: {
       type: Sequelize.DataTypes.TEXT("long"),
-      allowNull: false,
+      // allowNull: false,
+      allowNull: true,
     },
     genre: {
       type: Sequelize.DataTypes.ENUM(
@@ -41,20 +45,18 @@ Event.init(
     },
     date: {
       type: Sequelize.DataTypes.DATE,
-      allowNull: false,
+      // allowNull: false,
+      allowNull: true,
     },
     time: {
       type: Sequelize.DataTypes.TIME,
-      allowNull: false,
+      // allowNull: false,
+      allowNull: true,
     },
     notificationDate: {
       type: Sequelize.DataTypes.DATE,
-      allowNull: false,
-      // set(value) {
-      //   if (value < this.date) {
-      //     throw new Error("Notification date should be before the event date");
-      //   }
-      // },
+      // allowNull: false,
+      allowNull: true,
     },
     notificationTime: {
       type: Sequelize.DataTypes.TIME,
@@ -68,25 +70,26 @@ Event.init(
     },
     venue: {
       type: Sequelize.DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        validateVenue(value) {
-          if (this.available === "offline" && !value) {
-            throw new Error("Venue is required for offline events");
-          }
-        },
-      },
+      allowNull: true,
+      // validate: {
+      //   validateVenue(value) {
+      //     if (this.available === "offline" && !value) {
+      //       throw new Error("Venue is required for offline events");
+      //     }
+      //   },
+      // },
     },
     meetLink: {
       type: Sequelize.DataTypes.STRING,
-      validate: {
-        isUrl: true,
-        validateMeetLink(value) {
-          if (this.available === "online" && !value) {
-            throw new Error("Meet link is required for online events");
-          }
-        },
-      },
+      allowNull: true,
+      // validate: {
+      //   isUrl: true,
+      //   validateMeetLink(value) {
+      //     if (this.available === "online" && !value) {
+      //       throw new Error("Meet link is required for online events");
+      //     }
+      //   },
+      // },
     },
     personalizedRegisteration: {
       type: Sequelize.DataTypes.BOOLEAN,
@@ -96,19 +99,20 @@ Event.init(
     registerationLink: {
       type: Sequelize.DataTypes.STRING,
       allowNull: true,
-      validate: {
-        isUrl: true,
-        nullCheck(value) {
-          if (this.personalizedRegisteration && !value) {
-            throw new Error(
-              "Registeration link is required for personalized registeration"
-            );
-          }
-        },
-      },
+      // validate: {
+      //   isUrl: true,
+      //   nullCheck(value) {
+      //     if (this.personalizedRegisteration && !value) {
+      //       throw new Error(
+      //         "Registeration link is required for personalized registeration"
+      //       );
+      //     }
+      //   },
+      // },
     },
     coverImage: {
       type: Sequelize.DataTypes.STRING,
+      allowNull: true,
       defaultValue: "https://via.placeholder.com/150",
     },
     reachUsAt: {
