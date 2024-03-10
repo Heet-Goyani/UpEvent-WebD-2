@@ -1,7 +1,13 @@
+// File testing done.
+
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import User from "../../db/models/users.js";
+import dotenv from "dotenv";
 
+dotenv.config();
+
+// Login tested. setter error removed.
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -15,16 +21,18 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     } else {
       const token = jwt.sign(
-        { email: old.email, id: old.id },
+        { email: old.email, id: old.id, role: "user" },
         process.env.JWT_SECRET
       );
       return res.status(200).json({ token });
     }
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
 
+// Registeration tested. password validation error removed.
 export const register = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -39,11 +47,12 @@ export const register = async (req, res) => {
       password,
     });
     const token = jwt.sign(
-      { email: newUser.email, id: newUser.id, role: "user"},
+      { email: newUser.email, id: newUser.id, role: "user" },
       process.env.JWT_SECRET
     );
     return res.status(201).json({ token });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };

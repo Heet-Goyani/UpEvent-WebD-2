@@ -2,6 +2,8 @@ import { Sequelize, DataTypes, Model } from "sequelize";
 import { sequelize } from "../connection.js";
 import bcrypt from "bcrypt";
 
+// Some values are set to allowNull: true for testing purposes. Change them to false later.
+
 class User extends Model {}
 
 User.init(
@@ -13,7 +15,8 @@ User.init(
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
@@ -25,17 +28,12 @@ User.init(
     },
     college: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
+      allowNull: true,
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [8, 20],
-      },
-      get() {
-        return () => this.getDataValue("password");
-      },
       set(value) {
         try {
           let salt = bcrypt.genSaltSync(10);

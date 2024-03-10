@@ -2,6 +2,8 @@ import { Sequelize, DataTypes, Model } from "sequelize";
 import { sequelize } from "../connection.js";
 import bcrypt from "bcrypt";
 
+// Some values are set to allowNull: true for testing purposes. Change them to false later.
+
 class Organiser extends Model {}
 
 Organiser.init(
@@ -13,7 +15,8 @@ Organiser.init(
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
@@ -26,9 +29,6 @@ Organiser.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      get() {
-        return () => this.getDataValue("password");
-      },
       set(value) {
         try {
           let salt = bcrypt.genSaltSync(10);
@@ -55,7 +55,8 @@ Organiser.init(
     },
     college: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
+      allowNull: true,
     },
     collegeLocation: {
       type: DataTypes.STRING,

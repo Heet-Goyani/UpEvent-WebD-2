@@ -2,6 +2,8 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import Organiser from "../../db/models/organisers.js";
 
+// File testing done.
+
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -15,7 +17,7 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     } else {
       const token = jwt.sign(
-        { email: old.email, id: old.id },
+        { email: old.email, id: old.id, role: "organiser" },
         process.env.JWT_SECRET
       );
       return res.status(200).json({ token });
@@ -44,6 +46,7 @@ export const register = async (req, res) => {
     );
     return res.status(201).json({ token });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
