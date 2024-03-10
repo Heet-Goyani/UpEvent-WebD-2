@@ -2,4 +2,5 @@
 /my-app/.env
 /backend/node_modules
 /backend/.env
+/backend/db/models/sendNotifTo.js
 /Documentations.docx

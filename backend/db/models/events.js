@@ -14,7 +14,8 @@ Event.init(
     organiserId: {
       type: Sequelize.DataTypes.INTEGER,
       allowNull: false,
-      reference: {
+      foreignKey: true,
+      references: {
         model: Organiser,
         key: "id",
       },
@@ -27,6 +28,17 @@ Event.init(
       type: Sequelize.DataTypes.TEXT("long"),
       allowNull: false,
     },
+    genre: {
+      type: Sequelize.DataTypes.ENUM(
+        "technical",
+        "cultural",
+        "literary",
+        "sports",
+        "other"
+      ),
+      allowNull: false,
+      defaultValue: "other",
+    },
     date: {
       type: Sequelize.DataTypes.DATE,
       allowNull: false,
@@ -34,6 +46,20 @@ Event.init(
     time: {
       type: Sequelize.DataTypes.TIME,
       allowNull: false,
+    },
+    notificationDate: {
+      type: Sequelize.DataTypes.DATE,
+      allowNull: false,
+      // set(value) {
+      //   if (value < this.date) {
+      //     throw new Error("Notification date should be before the event date");
+      //   }
+      // },
+    },
+    notificationTime: {
+      type: Sequelize.DataTypes.TIME,
+      allowNull: false,
+      defaultValue: "12:00:00",
     },
     available: {
       type: Sequelize.DataTypes.ENUM("online", "offline"),
@@ -62,16 +88,51 @@ Event.init(
         },
       },
     },
+    personalizedRegisteration: {
+      type: Sequelize.DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
     registerationLink: {
       type: Sequelize.DataTypes.STRING,
       allowNull: true,
       validate: {
         isUrl: true,
+        nullCheck(value) {
+          if (this.personalizedRegisteration && !value) {
+            throw new Error(
+              "Registeration link is required for personalized registeration"
+            );
+          }
+        },
       },
     },
-    image: {
+    coverImage: {
       type: Sequelize.DataTypes.STRING,
-      allowNull: false,
+      defaultValue: "https://via.placeholder.com/150",
+    },
+    reachUsAt: {
+      type: Sequelize.DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        isEmail: true,
+      },
+    },
+    instagram: {
+      type: Sequelize.DataTypes.STRING,
+      allowNull: true,
+    },
+    linkedin: {
+      type: Sequelize.DataTypes.STRING,
+      allowNull: true,
+    },
+    facebook: {
+      type: Sequelize.DataTypes.STRING,
+      allowNull: true,
+    },
+    twitter: {
+      type: Sequelize.DataTypes.STRING,
+      allowNull: true,
     },
   },
   {
@@ -80,3 +141,5 @@ Event.init(
     tableName: "events",
   }
 );
+
+export default Event;

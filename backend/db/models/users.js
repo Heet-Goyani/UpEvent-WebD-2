@@ -15,18 +15,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isAlphanumeric: true,
-        len: [3, 20],
-      },
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         isEmail: true,
       },
@@ -53,6 +45,28 @@ User.init(
           throw new Error(err);
         }
       },
+    },
+    instagram: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    linkedin: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    facebook: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    twitter: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    profilePic: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue:
+        "https://simplyilm.com/wp-content/uploads/2017/08/temporary-profile-placeholder-1.jpg",
     },
   },
   {

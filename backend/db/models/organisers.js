@@ -15,41 +15,55 @@ Organiser.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    username: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       validate: {
-        isAlphanumeric: true,
-        len: [3, 20],
+        isEmail: true,
       },
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      get() {
+        return () => this.getDataValue("password");
+      },
+      set(value) {
+        try {
+          let salt = bcrypt.genSaltSync(10);
+          let hash = bcrypt.hashSync(value, salt);
+          this.setDataValue("password", hash);
+        } catch (err) {
+          throw new Error(err);
+        }
+      },
+    },
+    profilePic: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue:
+        "https://simplyilm.com/wp-content/uploads/2017/08/temporary-profile-placeholder-1.jpg",
     },
     about: {
       type: DataTypes.TEXT("long"),
-      allowNull: false,
+      allowNull: true,
+    },
+    website: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     college: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
+    collegeLocation: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true,
-      },
+      allowNull: true,
     },
-    get(){
-        return () => this.getDataValue("password");
-    },
-    set() {
-      try {
-        let salt = bcrypt.genSaltSync(10);
-        let hash = bcrypt.hashSync(this.getDataValue("password"), salt);
-        this.setDataValue("password", hash);
-      } catch (err) {
-        throw new Error(err);
-      }
+    collegeWebsite: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   },
   {

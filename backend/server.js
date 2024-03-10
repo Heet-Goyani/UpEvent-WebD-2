@@ -1,52 +1,90 @@
 import express from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
+import dotenv from "dotenv";
 import { sequelize, testConnection } from "./db/connection.js";
-import User from "./db/models/users.js";
+
+// import User from "./db/models/users.js";
+import Organiser from "./db/models/organisers.js";
+import Event from "./db/models/events.js";
+import registerEvent from "./db/models/registerEvents.js";
+import bookmarkEvent from "./db/models/bookmarkEvents.js";
+
+dotenv.config();
+
+import userRoutes from "./routes/user/auth.js";
+import organiserRoutes from "./routes/organiser/auth.js";
+// import adminRoutes from "./routes/admin/auth.js";
+
+// import eventRoutes from "./routes/event/event.js";
+// import userNotificationRoutes from "./routes/user/notification.js";
+
+// import userFeedbackRoutes from "./routes/user/feedback.js";
+// import userBookmarkRoutes from "./routes/user/bookmark.js";
 
 const app = express();
 app.use(bodyParser.json());
+
+app.use(cors());
+
+app.use("/user/auth", userRoutes);
+app.use("/organiser/auth", organiserRoutes);
+// app.use("/admin/auth", adminRoutes);
 
 app.get("/hello", (req, res) => {
   res.send("Hello World from UpEvent!!");
 });
 
+const temp = async () => {
+  try {
+
+    // const organiser = await Organiser.create({
+    //   email: "himanshukabra2212@gmail.com",
+    //   password: "123456",
+    //   name: "Himanshu Kabra",
+    //   college: "IIIT Surat",
+    //   collegeLocation: "Surat, Gujarat",
+    // });
+
+    // const user = await Organiser.findOne({
+    //   where: {
+    //     email: "himanshukabra2212@gmail.com",
+    //   },
+    // });
+
+    // const event = await Event.create({
+    //   organiserId: user.id,
+    //   name: "Event 1",
+    //   description: "This is the first event",
+    //   genre: "technical",
+    //   date: "2022-12-12",
+    //   time: "12:00:00",
+    //   notificationDate: "2022-12-11",
+    //   notificationTime: "12:00:00",
+    //   available: "offline",
+    //   venue: "Venue 1",
+    // });
+
+    const register = await registerEvent.create({
+      userId: 1,
+      eventId: 1,
+    });
+
+    const bookmark = await bookmarkEvent.create({
+      userId: 1,
+      eventId: 1,
+    });
+    
+  } catch (error) {
+    console.log(`Error occured ::::::: ${error}`);
+  }
+};
+
 app.listen(3000, () => {
   testConnection();
   (async () => {
     await sequelize.sync({ alter: true });
-
-    // const himanshu = User.build({
-    //   username: "Himanhsu Kabra",
-    //   email: "himanshu@gmail.com",
-    //   password: "123456",
-    // });
-    // await himanshu.save();
-    // console.log(himanshu); // true
-    // console.log(himanshu.username); // "Jane"
-
-    // let data = await User.findAll({
-    //   attributes: {
-    //     exclude: ["password"],
-
-    //     // Note the use of sequelize.fn and sequelize.col here
-
-    //     // include: [
-    //     //   [sequelize.fn("CONCAT", sequelize.col("username")), "fullName"]
-    //     // ]
-    //   },
-    // });
-
-    // console.log(data);
-
-    // let data = await sequelize.query("SELECT * FROM users", {
-    //   type: sequelize.QueryTypes.SELECT,
-    //   model: User,
-    //   mapToModel: true
-    // });
-    // data[0].username = "Hishal Harma";
-    // await data[0].save();
-    // console.log(data[0]['username']);
-    
+    temp();
   })();
 
   console.log(
