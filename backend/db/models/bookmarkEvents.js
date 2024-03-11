@@ -13,29 +13,12 @@ bookmarkEvent.init(
       type: Sequelize.DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
-    },
-    userId: {
-      type: Sequelize.DataTypes.INTEGER,
-      allowNull: false,
-      foreignKey: true,
-      references: {
-        model: User,
-        key: "id",
-      },
-    },
-    eventId: {
-      type: Sequelize.DataTypes.INTEGER,
-      allowNull: false,
-      foreignKey: true,
-      references: {
-        model: Event,
-        key: "id",
-      },
-    },
+    }
   },
   {
     sequelize,
     modelName: "bookmarkEvents",
+    className: "bookmarkEvent", 
     timestamps: false,
   }
 );

@@ -1,8 +1,11 @@
-import { Sequelize, DataTypes, Model } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../connection.js";
 import bcrypt from "bcrypt";
 
 // Some values are set to allowNull: true for testing purposes. Change them to false later.
+
+import Register from "./registerEvents.js";
+import Bookmark from "./bookmarkEvents.js";
 
 class User extends Model {}
 

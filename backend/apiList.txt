@@ -1,0 +1,22 @@
+
+User APIs :
+
+List event with filter :  POST {domain}/event/list                          //DONE and TESTED
+Bookmark event : POST {domain}/user/bookmarkevent/{eventId}                 //DONE and TESTED
+Get Bookmarked Events : GET {domain}/user/bookmarkevent                     //DONE and TESTED
+Register for event : POST {domain}/user/registerevent/{eventId}             //DONE and TESTED
+Get Registered Events : GET {domain}/user/registerevent                     //DONE and TESTED
+Get Profile : GET {domain}/user/profile/{userId}
+Update Profile : PATCH {domain}/user/profile/update
+
+
+Event APIs :
+
+Create Event : POST {domain}/event/Create                   -- Just for Organiser           //DONE and TESTED
+Update Event : PATCH {domain}/event/Update/{eventId}         -- Just for Organiser          //DONE and TESTED
+List event with filter : POST {domain}/event/list           -- Common for everyone          //DONE and TESTED
+Get Single Event : {domain}/event/{eventId}                 -- For everyone                 //DONE and TESTED
+
+Organiser APIs :
+
+

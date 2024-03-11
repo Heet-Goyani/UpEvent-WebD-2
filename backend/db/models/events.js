@@ -1,8 +1,11 @@
-import { Sequelize } from "sequelize";
+import { Sequelize, Model } from "sequelize";
 import { sequelize } from "../connection.js";
 import Organiser from "./organisers.js";
 
-class Event extends Sequelize.Model {}
+import Register from "./registerEvents.js";
+import Bookmark from "./bookmarkEvents.js";
+
+class Event extends Model {}
 
 // Some values are set to allowNull: true for testing purposes. Change them to false later.
 

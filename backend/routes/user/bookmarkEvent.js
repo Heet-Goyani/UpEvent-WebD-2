@@ -2,7 +2,10 @@ import { Router } from "express";
 const router = Router();
 
 // Controller imports
-import Bookmark from "../../controllers/user/bookmarkEvent.js";
+import {
+  Bookmark,
+  getBookmarked,
+} from "../../controllers/user/bookmarkEvent.js";
 
 // Middleware imports
 import isUser from "../../middlewares/auth/isUser.js";
@@ -12,6 +15,7 @@ import isUser from "../../middlewares/auth/isUser.js";
 // import Event from "../../db/models/events.js";
 // import User from "../../db/models/users.js";
 
-router.post("/bookmarkevent", isUser, Bookmark);
+router.post("/bookmarkevent/:id", isUser, Bookmark);
+router.get("/bookmarkevent", isUser, getBookmarked);
 
 export default router;

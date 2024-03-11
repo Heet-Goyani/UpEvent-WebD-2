@@ -22,10 +22,14 @@ import userRoutes from "./routes/user/auth.js";
 import organiserRoutes from "./routes/organiser/auth.js";
 
 // Event route imports
+import getEventRoutes from "./routes/event/getEvent.js";
 import eventListRoutes from "./routes/event/eventList.js";
+import eventCreateRoutes from "./routes/event/createEvent.js";
+import eventUpdateRoutes from "./routes/event/updateEvent.js";
 
 // User route imports
 import userBookmarkRoutes from "./routes/user/bookmarkEvent.js";
+import userRegisteredRoutes from "./routes/user/registerEvent.js";
 
 // Auth routes
 app.use("/user/auth", userRoutes);
@@ -34,9 +38,13 @@ app.use("/organiser/auth", organiserRoutes);
 
 // Event routes
 app.use("/event", eventListRoutes);
+app.use("/event", eventCreateRoutes);
+app.use("/event", eventUpdateRoutes);
+app.use("/event", getEventRoutes);
 
 // User routes
 app.use("/user", userBookmarkRoutes);
+app.use("/user", userRegisteredRoutes);
 // app.use("/user", userRegisteredRoutes);
 // app.use("/user", userRegisteredRoutes);
 
@@ -94,7 +102,25 @@ app.get("/hello", (req, res) => {
 app.listen(3000, () => {
   testConnection();
   (async () => {
-    await sequelize.sync({ alter: true });
+    
+    bookmarkEvent.belongsTo(Event, {
+      foreignKey: "eventId",
+      onDelete: "CASCADE",
+    });
+    registerEvent.belongsTo(Event, {
+      foreignKey: "eventId",
+      onDelete: "CASCADE",
+    });
+    bookmarkEvent.belongsTo(User, {
+      foreignKey: "userId",
+      onDelete: "CASCADE",
+    });
+    registerEvent.belongsTo(User, {
+      foreignKey: "userId",
+      onDelete: "CASCADE",
+    });
+
+    // await sequelize.sync({ force : true });
     // temp();
   })();
 
