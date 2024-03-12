@@ -6,10 +6,10 @@ import {
   getProfilePublic,
   getProfilePrivate,
   updateProfile,
-} from "../../controllers/user/userProfile.js";
+} from "../../controllers/organiser/organiserProfile.js";
 
 // Middleware imports
-import isUser from "../../middlewares/auth/isUser.js";
+import isOrganiser from "../../middlewares/auth/isOrganiser.js";
 
 // Model imports
 // import bookmarkEvent from "../../db/models/bookmarkEvents.js";
@@ -17,7 +17,7 @@ import isUser from "../../middlewares/auth/isUser.js";
 // import User from "../../db/models/users.js";
 
 router.get("/profile/:id", getProfilePublic); // Public route
-router.get("/profile", isUser, getProfilePrivate); // Public route
-router.patch("/profile", isUser, updateProfile);
+router.get("/profile", isOrganiser, getProfilePrivate); // Public route
+router.patch("/profile", isOrganiser, updateProfile);
 
 export default router;

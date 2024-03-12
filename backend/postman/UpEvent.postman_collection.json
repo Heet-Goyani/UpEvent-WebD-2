@@ -1,0 +1,550 @@
+{
+  "info": {
+    "_postman_id": "24f88a32-f61e-4bbb-ab9a-17badb4ec4fe",
+    "name": "UpEvent",
+    "description": "This is the API collection for UpEvent Application.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23127590"
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\" : \"Himanshukabra22@gmail.com\",\r\n    \"password\" : \"Himanshu1234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/user/auth/register",
+              "host": ["{{BASE_URL}}"],
+              "path": ["user", "auth", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\" : \"Himanshukabra22@gmail.com\",\r\n    \"password\" : \"Himanshu1234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/user/auth/login",
+              "host": ["{{BASE_URL}}"],
+              "path": ["user", "auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List all events (filter)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "// You can pass filter here",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/event/list",
+              "host": ["{{BASE_URL}}"],
+              "path": ["event", "list"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Bookmark or unbookmark",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{USER_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/user/bookmarkevent/1",
+              "host": ["{{BASE_URL}}"],
+              "path": ["user", "bookmarkevent", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Bookmarked event list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{USER_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/user/bookmarkevent",
+              "host": ["{{BASE_URL}}"],
+              "path": ["user", "bookmarkevent"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check if bookmarked",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{USER_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/user/bookmarkevent/1",
+              "host": ["{{BASE_URL}}"],
+              "path": ["user", "bookmarkevent", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register or Unregister",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{USER_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/user/registerevent/1",
+              "host": ["{{BASE_URL}}"],
+              "path": ["user", "registerevent", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Registered event list",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{USER_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/user/registerevent",
+              "host": ["{{BASE_URL}}"],
+              "path": ["user", "registerevent"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check if registered",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{USER_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/user/registerevent/1",
+              "host": ["{{BASE_URL}}"],
+              "path": ["user", "registerevent", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get loggedin user detail",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{USER_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/user/profile",
+              "host": ["{{BASE_URL}}"],
+              "path": ["user", "profile"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{USER_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"instagram\" : \"https://instagram.com/updated-link\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/user/profile",
+              "host": ["{{BASE_URL}}"],
+              "path": ["user", "profile"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "All APIs that can be used by user."
+    },
+    {
+      "name": "Organiser",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\" : \"himanshukabra22@gmail.com\",\r\n    \"password\" : \"himanshu1234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/organiser/auth/register",
+              "host": ["{{BASE_URL}}"],
+              "path": ["organiser", "auth", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\" : \"Himanshukabra22@gmail.com\",\r\n    \"password\" : \"himanshu1234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/organiser/auth/login",
+              "host": ["{{BASE_URL}}"],
+              "path": ["organiser", "auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Event",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ORGANISER_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Event from postman\",\r\n    \"description\" : \"Event from postman\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/event/create",
+              "host": ["{{BASE_URL}}"],
+              "path": ["event", "create"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get loggedin organiser detail",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ORGANISER_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/organiser/profile",
+              "host": ["{{BASE_URL}}"],
+              "path": ["organiser", "profile"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ORGANISER_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"instagram\" : \"https://instagram.com/updated-link\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/organiser/profile",
+              "host": ["{{BASE_URL}}"],
+              "path": ["organiser", "profile"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update event",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ORGANISER_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Updated event name\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/event/update/2",
+              "host": ["{{BASE_URL}}"],
+              "path": ["event", "update", "2"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "All APIs that can be used by Organiser."
+    },
+    {
+      "name": "Public",
+      "item": [
+        {
+          "name": "Get user profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/user/profile/3",
+              "host": ["{{BASE_URL}}"],
+              "path": ["user", "profile", "3"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List all events (filter)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "// You can pass filter here",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/event/list",
+              "host": ["{{BASE_URL}}"],
+              "path": ["event", "list"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get event details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/event/1",
+              "host": ["{{BASE_URL}}"],
+              "path": ["event", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get organiser profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/organiser/profile/2",
+              "host": ["{{BASE_URL}}"],
+              "path": ["organiser", "profile", "2"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ]
+}

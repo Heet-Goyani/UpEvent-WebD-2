@@ -32,6 +32,9 @@ import userBookmarkRoutes from "./routes/user/bookmarkEvent.js";
 import userRegisteredRoutes from "./routes/user/registerEvent.js";
 import userProfileRoutes from "./routes/user/userProfile.js";
 
+// Organiser route imports
+import organiserProfileRoutes from "./routes/organiser/organiserProfile.js";
+
 // Auth routes
 app.use("/user/auth", userRoutes);
 app.use("/organiser/auth", organiserRoutes);
@@ -51,6 +54,7 @@ app.use("/user", userProfileRoutes);
 // app.use("/user", userRegisteredRoutes);
 
 // organiser routes
+app.use("/organiser", organiserProfileRoutes);
 
 app.get("/hello", (req, res) => {
   res.send("Hello World from UpEvent!!");
