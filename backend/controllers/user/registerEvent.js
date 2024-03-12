@@ -38,7 +38,7 @@ const Register = async (req, res) => {
   }
 };
 
-const getRegisteredEvents = async (req, res) => {
+const getRegisteredList = async (req, res) => {
   try {
     const events = await registerEvent.findAll({
       where: { userId: req.user.id },
@@ -54,4 +54,18 @@ const getRegisteredEvents = async (req, res) => {
   }
 };
 
-export { Register, getRegisteredEvents };
+const getRegistered = async (req, res) => {
+  try {
+    const eventId = req.params.id;
+    const event = await registerEvent.findOne({
+      where: { eventId, userId: req.user.id },
+    });
+    if (!event) return res.status(404).json({ message: "Event not found" });
+    return res.status(200).json({ event: event });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export { Register, getRegisteredList, getRegistered };

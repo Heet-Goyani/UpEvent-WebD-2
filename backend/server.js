@@ -30,6 +30,7 @@ import eventUpdateRoutes from "./routes/event/updateEvent.js";
 // User route imports
 import userBookmarkRoutes from "./routes/user/bookmarkEvent.js";
 import userRegisteredRoutes from "./routes/user/registerEvent.js";
+import userProfileRoutes from "./routes/user/userProfile.js";
 
 // Auth routes
 app.use("/user/auth", userRoutes);
@@ -45,6 +46,7 @@ app.use("/event", getEventRoutes);
 // User routes
 app.use("/user", userBookmarkRoutes);
 app.use("/user", userRegisteredRoutes);
+app.use("/user", userProfileRoutes);
 // app.use("/user", userRegisteredRoutes);
 // app.use("/user", userRegisteredRoutes);
 

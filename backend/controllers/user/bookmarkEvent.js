@@ -38,12 +38,12 @@ const Bookmark = async (req, res) => {
   }
 };
 
-const getBookmarked = async (req, res) => {
+const getBookmarkedList = async (req, res) => {
   try {
     const events = await bookmarkEvent.findAll({
       where: { userId: req.user.id },
       include: Event,
-      nest : true,
+      nest: true,
       raw: true,
     });
     if (!events) return res.status(404).json({ message: "No events found" });
@@ -54,4 +54,18 @@ const getBookmarked = async (req, res) => {
   }
 };
 
-export { Bookmark, getBookmarked };
+const getBookmarked = async (req, res) => {
+  try {
+    const eventId = req.params.id;
+    const event = await bookmarkEvent.findOne({
+      where: { eventId, userId: req.user.id },
+    });
+    if (!event) return res.status(404).json({ message: "Event not found" });
+    return res.status(200).json({ events: event });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export { Bookmark, getBookmarkedList, getBookmarked };

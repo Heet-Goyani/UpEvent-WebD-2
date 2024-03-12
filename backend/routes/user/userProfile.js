@@ -3,10 +3,9 @@ const router = Router();
 
 // Controller imports
 import {
-  Bookmark,
-  getBookmarkedList,
-  getBookmarked,
-} from "../../controllers/user/bookmarkEvent.js";
+  getProfile,
+  updateProfile,
+} from "../../controllers/user/userProfile.js";
 
 // Middleware imports
 import isUser from "../../middlewares/auth/isUser.js";
@@ -16,8 +15,7 @@ import isUser from "../../middlewares/auth/isUser.js";
 // import Event from "../../db/models/events.js";
 // import User from "../../db/models/users.js";
 
-router.post("/bookmarkevent/:id", isUser, Bookmark);
-router.get("/bookmarkevent/:id", isUser, getBookmarked);
-router.get("/bookmarkevent", isUser, getBookmarkedList);
+router.get("/profile/:id", getProfile);
+router.patch("/profile", isUser, updateProfile);
 
 export default router;

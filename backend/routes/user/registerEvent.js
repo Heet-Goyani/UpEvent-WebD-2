@@ -2,7 +2,7 @@ import { Router } from "express";
 const router = Router();
 
 // Controller imports
-import {getRegisteredEvents,Register} from "../../controllers/user/registerEvent.js";
+import {Register,getRegisteredList,getRegistered} from "../../controllers/user/registerEvent.js";
 
 // Middleware imports
 import isUser from "../../middlewares/auth/isUser.js";
@@ -11,6 +11,7 @@ import isUser from "../../middlewares/auth/isUser.js";
 // import registerEvent from "../../db/models/registerEvents.js";
 
 router.post("/registerevent/:id", isUser, Register);
-router.get("/registerevent", isUser, getRegisteredEvents);
+router.get("/registerevent/:id", isUser, getRegistered);
+router.get("/registerevent", isUser, getRegisteredList);
 
 export default router;
