@@ -1,0 +1,125 @@
+.container {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3.47vmax;
+    padding: 0 8.33vmax;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-family: Bold;
+}
+
+.p2 {
+    color: var(--primary);
+}
+
+.profile {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.btnBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    border: none;
+    cursor: pointer;
+    height: 45px;
+    width: 100px;
+    margin: 0 5px;
+    border-radius: 5px;
+    font-family: 'Regular';
+    font-size: 16px;
+}
+
+.btnBox .btn:first-child {
+    color: var(--black);
+    background-color: var(--background);
+}
+
+.btnBox .btn:last-child {
+    color: var(--white);
+    background-color: var(--primary);
+}
+
+.btn:first-child:hover {
+    color: var(--white);
+    background-color: var(--primary);
+    transition: 0.3s;
+}
+
+.btn:last-child:hover {
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+@media screen and (max-width: 1024px){
+    .container {
+        padding: 0 4.15vmax;
+    }
+    .heading {
+        font-size: 35px;
+    }
+    .btn {
+        height: 40px;
+        width: 80px;
+        font-size: 14px;
+    }
+    .profile {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 0 50px;
+    }
+    .heading {
+        font-size: 30px;
+    }
+    .btn {
+        height: 40px;
+        width: 80px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .container {
+        margin-top: 1.4em;
+        padding: 0 20px;
+    }
+    .heading {
+        font-size: 1.56em;
+    }
+    .btn {
+        height: 35px;
+        width: 80px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .container {
+        margin-top: 1.2em;
+    }
+    .heading {
+        font-size: 20px;
+    }
+    .btn {
+        height: 30px;
+        width: 70px;
+    }
+}
