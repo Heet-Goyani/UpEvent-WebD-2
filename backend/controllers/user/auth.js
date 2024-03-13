@@ -18,6 +18,7 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
     const old = await User.findOne({
       where: { email },
+      raw : true
     });
     if (!old) {
       return res.status(404).json({ message: "User doesn't exist" });
@@ -29,7 +30,8 @@ export const login = async (req, res) => {
         { email: old.email, id: old.id, role: "user" },
         process.env.JWT_SECRET
       );
-      return res.status(200).json({ token });
+      delete old.password;
+      return res.status(200).json({ token, user : old });
     }
   } catch (error) {
     console.log(error);

@@ -2,7 +2,7 @@ import { Router } from "express";
 const router = Router();
 
 // Controller imports
-import getEvent from "../../controllers/event/getEvent.js";
+import getEvent from "../../controllers/public/getEvent.js";
 
 // Middleware imports
 

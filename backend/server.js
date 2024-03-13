@@ -21,11 +21,9 @@ import bookmarkEvent from "./db/models/bookmarkEvents.js";
 import userRoutes from "./routes/user/auth.js";
 import organiserRoutes from "./routes/organiser/auth.js";
 
-// Event route imports
-import getEventRoutes from "./routes/event/getEvent.js";
-import eventListRoutes from "./routes/event/eventList.js";
-import eventCreateRoutes from "./routes/event/createEvent.js";
-import eventUpdateRoutes from "./routes/event/updateEvent.js";
+// Public route imports
+import getEventRoutes from "./routes/public/getEvent.js";
+import eventListRoutes from "./routes/public/eventList.js";
 
 // User route imports
 import userBookmarkRoutes from "./routes/user/bookmarkEvent.js";
@@ -34,15 +32,15 @@ import userProfileRoutes from "./routes/user/userProfile.js";
 
 // Organiser route imports
 import organiserProfileRoutes from "./routes/organiser/organiserProfile.js";
+import eventCreateRoutes from "./routes/organiser/createEvent.js";
+import eventUpdateRoutes from "./routes/organiser/updateEvent.js";
 
 // Auth routes
 app.use("/user/auth", userRoutes);
 app.use("/organiser/auth", organiserRoutes);
 
-// Event routes
+// Public routes
 app.use("/event", eventListRoutes);
-app.use("/event", eventCreateRoutes);
-app.use("/event", eventUpdateRoutes);
 app.use("/event", getEventRoutes);
 
 // User routes
@@ -52,6 +50,8 @@ app.use("/user", userProfileRoutes);
 
 // organiser routes
 app.use("/organiser", organiserProfileRoutes);
+app.use("/event", eventCreateRoutes);
+app.use("/event", eventUpdateRoutes);
 
 app.get("/hello", (req, res) => {
   res.send("Hello World from UpEvent!!");

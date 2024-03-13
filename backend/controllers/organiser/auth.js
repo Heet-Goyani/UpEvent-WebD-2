@@ -15,6 +15,7 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
     const old = await Organiser.findOne({
       where: { email },
+      raw: true,
     });
     if (!old) {
       return res.status(404).json({ message: "User doesn't exist" });
@@ -26,7 +27,8 @@ export const login = async (req, res) => {
         { email: old.email, id: old.id, role: "organiser" },
         process.env.JWT_SECRET
       );
-      return res.status(200).json({ token });
+      delete old.password;
+      return res.status(200).json({ token, organiser: old });
     }
   } catch (error) {
     return res.status(500).json({ message: "Internal server error" });
