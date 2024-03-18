@@ -9,6 +9,10 @@ Register for event : POST {domain}/user/registerevent/{eventId}             //DO
 Get list of Registered Events : GET {domain}/user/registerevent             //DONE and TESTED
 Get Registered Event : GET {domain}/user/registerevent/{eventId}            //DONE and TESTED
 Get Profile : GET {domain}/user/profile/{userId}                            //DONE and TESTED
+Change password : POST {domain}/user/changepassword
+{
+    "newPassword" : "hellowowlrd"
+}
 Update Profile : PATCH {domain}/user/profile/update
 
 
@@ -23,5 +27,33 @@ Organiser APIs :
 
 Create Event : POST {domain}/event/Create                                                   //DONE and TESTED
 Update Event : PATCH {domain}/event/Update/{eventId}                                        //DONE and TESTED
+Change password : POST {domain}/organiser/changepassword
+{
+    "newPassword" : "hellowowlrd"
+}
 List my Events : 
 Dashboard : 
+
+Public APIs :
+
+User Forgot password, send otp : POST {domain}/user/sendotp
+{
+    "email" : "himanshukabra2212@gmail.com"
+}
+Verify Otp and set new password : POST {domain}/user/verifyotp
+{
+    "email" : "himanshukabra2212@gmail.com",
+    "otp" : 1234,
+    "newPassword" : "hellowowlrd"
+}
+
+Organiser Forgot password, send otp : POST {domain}/organiser/sendotp
+{
+    "email" : "himanshukabra2212@gmail.com"
+}
+Verify Otp and set new password : POST {domain}/organiser/verifyotp
+{
+    "email" : "himanshukabra2212@gmail.com",
+    "otp" : 1234,
+    "newPassword" : "hellowowlrd"
+}
