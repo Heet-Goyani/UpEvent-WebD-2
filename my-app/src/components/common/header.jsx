@@ -7,7 +7,7 @@ const Header = () => {
     const link = 'https://lh3.googleusercontent.com/a/ACg8ocJeNOks3NynMczVETRtQorWS8-SWU4XxublttudK3Y1VOI=s432-c-no';
     const [profile, setProfile] = useState(null);
     return (
-        <div className='container'>
+        <div className='cont'>
             <div className='heading'>
                 <p className='p1'>Up</p><p className='p2'>Event</p>
             </div>

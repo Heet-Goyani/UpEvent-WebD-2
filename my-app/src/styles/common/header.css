@@ -1,9 +1,9 @@
-.container {
+.cont {
     width: 100vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 3.47vmax;
+    margin-top: 2.0vmax;
     padding: 0 8.33vmax;
 }
 
@@ -13,6 +13,11 @@
     justify-content: center;
     font-size: 40px;
     font-family: Bold;
+}
+
+p {
+    margin : 0;
+    padding: 0;
 }
 
 .p2 {
@@ -44,7 +49,7 @@
 }
 
 .btnBox .btn:first-child {
-    color: var(--black);
+    color: inherit;
     background-color: var(--background);
 }
 
@@ -65,8 +70,8 @@
 }
 
 @media screen and (max-width: 1024px){
-    .container {
-        padding: 0 4.15vmax;
+    .cont {
+        padding: 0 60px;
     }
     .heading {
         font-size: 35px;
@@ -83,7 +88,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .container {
+    .cont {
         padding: 0 50px;
     }
     .heading {
@@ -97,7 +102,7 @@
 }
 
 @media screen and (max-width: 480px){
-    .container {
+    .cont {
         margin-top: 1.4em;
         padding: 0 20px;
     }
@@ -112,7 +117,7 @@
 }
 
 @media screen and (max-width: 320px){
-    .container {
+    .cont {
         margin-top: 1.2em;
     }
     .heading {
