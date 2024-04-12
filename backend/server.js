@@ -95,7 +95,7 @@ app.listen(3000, () => {
       onDelete: "CASCADE",
     });
 
-    await sequelize.sync({ alter: true });
+    // await sequelize.sync({ alter: true });
   })();
   console.log(
     "<<--------------------------------------------------------->>\n\nApplication is running, Use Ctrl + click on following URL :\nhttp://localhost:3000/hello\n\n<<--------------------------------------------------------->>"

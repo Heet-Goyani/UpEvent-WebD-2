@@ -40,7 +40,7 @@ const getProfilePrivate = async (req, res) => {
 const updateProfile = async (req, res) => {
   try {
     const id = req.user.id;
-    const { name, college, instagram, linkedin, facebook, twitter } = req.body;
+    const { name, profilePic, college, instagram, linkedin, facebook, twitter } = req.body;
     const organiser = await Organiser.findOne({
       where: { id },
     });
@@ -49,6 +49,7 @@ const updateProfile = async (req, res) => {
     const updatedOrganiser = await Organiser.update(
       {
         name,
+        profilePic,
         college,
         instagram,
         linkedin,

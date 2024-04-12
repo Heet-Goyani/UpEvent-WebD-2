@@ -31,6 +31,7 @@ const createEvent = async (req, res) => {
       twitter,
       linkedin,
     } = req.body;
+    
     const event = await Event.create({
       name,
       description,

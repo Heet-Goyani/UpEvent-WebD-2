@@ -65,4 +65,23 @@ const updateProfile = async (req, res) => {
   }
 };
 
-export { getProfilePublic, getProfilePrivate, updateProfile };
+const deleteProfile = async (req, res) => {
+  try {
+    const id = req.user.id;
+    const user = await User.findOne({
+      where: { id },
+    });
+    if (!user) return res.status(404).json({ message: "User not found" });
+    const deletedUser = await User.destroy({
+      where: { id },
+    });
+    if (!deletedUser)
+      return res.status(400).json({ message: "Profile not deleted" });
+    return res.status(200).json({ message: "Profile deleted" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export { getProfilePublic, getProfilePrivate, updateProfile, deleteProfile };

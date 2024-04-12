@@ -27,7 +27,7 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     } else {
       const token = jwt.sign(
-        { email: old.email, id: old.id, role: "user" },
+        { email: old.email, id: old.id, role: "user", verified: old.verified},
         process.env.JWT_SECRET
       );
       delete old.password;
@@ -47,14 +47,14 @@ export const register = async (req, res) => {
       where: { email },
     });
     if (old) {
-      return res.status(400).json({ message: "User already exists" });
+      return res.status(409).json({ message: "User already exists" });
     }
     const newUser = await User.create({
       email,
       password,
     });
     const token = jwt.sign(
-      { email: newUser.email, id: newUser.id, role: "user" },
+      { email: newUser.email, id: newUser.id, role: "user", verified: newUser.verified },
       process.env.JWT_SECRET
     );
     return res.status(201).json({ token });
