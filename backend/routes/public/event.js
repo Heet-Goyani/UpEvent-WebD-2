@@ -2,14 +2,14 @@ import { Router } from "express";
 const router = Router();
 
 // Controller imports
-import getEvent from "../../controllers/public/getEvent.js";
+import {getEventList, getEvent} from "../../controllers/public/event.js";
 
 // Middleware imports
 
 // Model imports
 
-// Testing Remaining
+router.post("/events", getEventList);
+router.get("/events/:id", getEvent);
 
-router.get("/:id", getEvent);
 
 export default router;

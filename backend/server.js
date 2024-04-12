@@ -24,44 +24,36 @@ import userRoutes from "./routes/user/auth.js";
 import organiserRoutes from "./routes/organiser/auth.js";
 
 // Public route imports
-import getEventRoutes from "./routes/public/getEvent.js";
-import eventListRoutes from "./routes/public/eventList.js";
-import sendOtp from "./routes/public/otp/sendOtp.js";
-import verifyOtp from "./routes/public/otp/verifyOtpAndResetPassword.js";
+import publicEventRoutes from "./routes/public/event.js";
+import publicUserRoutes from "./routes/public/user.js";
+import publicOrganiserRoutes from "./routes/public/organiser.js";
 
 // User route imports
-import userBookmarkRoutes from "./routes/user/bookmarkEvent.js";
-import userRegisteredRoutes from "./routes/user/registerEvent.js";
+import userEventRoutes from "./routes/user/event.js";
 import userProfileRoutes from "./routes/user/userProfile.js";
-import changeUserPasswordRoutes from "./routes/user/changePassword.js";
 
 // Organiser route imports
+import organiserEventRoutes from "./routes/organiser/event.js";
 import organiserProfileRoutes from "./routes/organiser/organiserProfile.js";
-import eventCreateRoutes from "./routes/organiser/createEvent.js";
-import eventUpdateRoutes from "./routes/organiser/updateEvent.js";
-import changeOrganiserPasswordRoutes from "./routes/user/changePassword.js";
 
 // Auth routes
 app.use("/user/auth", userRoutes);
 app.use("/organiser/auth", organiserRoutes);
 
 // Public routes
-app.use("/event", eventListRoutes);
-app.use("/event", getEventRoutes);
-app.use(sendOtp);
-app.use(verifyOtp);
+app.use("/public", publicEventRoutes);
+app.use("/public", publicUserRoutes);
+app.use("/public", publicOrganiserRoutes);
 
 // User routes
-app.use("/user", userBookmarkRoutes);
-app.use("/user", userRegisteredRoutes);
+app.use("/user", userEventRoutes);
 app.use("/user", userProfileRoutes);
-app.use("/user", changeUserPasswordRoutes);
+// app.use("/user", userStatsRoutes);
 
 // organiser routes
+app.use("/organiser", organiserEventRoutes);
 app.use("/organiser", organiserProfileRoutes);
-app.use("/organiser", changeOrganiserPasswordRoutes);
-app.use("/event", eventCreateRoutes);
-app.use("/event", eventUpdateRoutes);
+// app.use("/organiser", organiserStatsRoutes);
 
 app.get("/hello", (req, res) => {
   res.send("Hello World from UpEvent!!");

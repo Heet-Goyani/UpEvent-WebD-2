@@ -18,7 +18,7 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
     const old = await User.findOne({
       where: { email },
-      raw : true
+      raw: true,
     });
     if (!old) {
       return res.status(404).json({ message: "User doesn't exist" });
@@ -27,15 +27,15 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     } else {
       const token = jwt.sign(
-        { email: old.email, id: old.id, role: "user", verified: old.verified},
+        { email: old.email, id: old.id, role: "user", verified: old.verified },
         process.env.JWT_SECRET
       );
       delete old.password;
-      return res.status(200).json({ token, user : old });
+      return res.status(200).json({ token, user: old });
     }
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -54,12 +54,18 @@ export const register = async (req, res) => {
       password,
     });
     const token = jwt.sign(
-      { email: newUser.email, id: newUser.id, role: "user", verified: newUser.verified },
+      {
+        email: newUser.email,
+        id: newUser.id,
+        role: "user",
+        verified: newUser.verified,
+      },
       process.env.JWT_SECRET
     );
-    return res.status(201).json({ token });
+    delete newUser.password;
+    return res.status(201).json({ token, user: newUser});
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: error.message });
   }
 };
