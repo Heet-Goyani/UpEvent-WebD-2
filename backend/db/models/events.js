@@ -27,12 +27,12 @@ Event.init(
     },
     name: {
       type: Sequelize.DataTypes.STRING,
-      // allowNull: false,
+      allowNull: false,
       allowNull: true,
     },
     description: {
       type: Sequelize.DataTypes.TEXT("long"),
-      // allowNull: false,
+      allowNull: false,
       allowNull: true,
     },
     genre: {
@@ -48,12 +48,12 @@ Event.init(
     },
     date: {
       type: Sequelize.DataTypes.DATE,
-      // allowNull: false,
+      allowNull: false,
       allowNull: true,
     },
     time: {
       type: Sequelize.DataTypes.TIME,
-      // allowNull: false,
+      allowNull: false,
       allowNull: true,
     },
     notificationDate: {
