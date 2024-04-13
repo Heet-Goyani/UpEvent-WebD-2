@@ -88,7 +88,7 @@ const getEventDetails = async (req, res) => {
     const userId = req.user.id;
     const eventId = req.params.id;
     const event = await sequelize.query(
-      `with userregisteredevents as (select * from registerevents where userId = ${userId}), userbookmarkedevents as ( select * from bookmarkevents where userId = ${userId}) select l.id, case when r1.eventId is not null then True else False end as registered, case when r2.eventId is not null then True else False end as bookmarked from  events as l left join userregisteredevents as r1 on l.id = r1.eventId left join userbookmarkedevents as r2 on l.id = r2.eventId where l.id = ${eventId};`,
+      `with userregisteredevents as (select * from registerEvents where userId = ${userId}), userbookmarkedevents as ( select * from bookmarkEvents where userId = ${userId}) select l.id, case when r1.eventId is not null then True else False end as registered, case when r2.eventId is not null then True else False end as bookmarked from  events as l left join userregisteredevents as r1 on l.id = r1.eventId left join userbookmarkedevents as r2 on l.id = r2.eventId where l.id = ${eventId};`,
       {
         type: QueryTypes.SELECT,
       }
@@ -105,7 +105,7 @@ const getAllEventList = async (req, res) => {
   try {
     const userId = req.user.id;
     const events = await sequelize.query(
-      `with userregisteredevents as (select * from registerevents where userId = ${userId}), userbookmarkedevents as ( select * from bookmarkevents where userId = ${userId}) select l.id, case when r1.eventId is not null then True else False end as registered, case when r2.eventId is not null then True else False end as bookmarked from  events as l left join userregisteredevents as r1 on l.id = r1.eventId left join userbookmarkedevents as r2 on l.id = r2.eventId;`,
+      `with userregisteredevents as (select * from registerEvents where userId = ${userId}), userbookmarkedevents as ( select * from bookmarkEvents where userId = ${userId}) select l.id, case when r1.eventId is not null then True else False end as registered, case when r2.eventId is not null then True else False end as bookmarked from  events as l left join userregisteredevents as r1 on l.id = r1.eventId left join userbookmarkedevents as r2 on l.id = r2.eventId;`,
       {
         type: QueryTypes.SELECT,
       }
@@ -122,7 +122,7 @@ const getRegisteredEventList = async (req, res) => {
   try {
     const userId = req.user.id;
     const events = await sequelize.query(
-      `with userregisteredevents as (select * from registerevents where userId = ${userId}), userbookmarkedevents as ( select * from bookmarkevents where userId = ${userId}) select l.id, case when r1.eventId is not null then True else False end as registered, case when r2.eventId is not null then True else False end as bookmarked from  events as l left join userregisteredevents as r1 on l.id = r1.eventId left join userbookmarkedevents as r2 on l.id = r2.eventId where (case when r1.eventId is not null then True else False end) = True;`,
+      `with userregisteredevents as (select * from registerEvents where userId = ${userId}), userbookmarkedevents as ( select * from bookmarkEvents where userId = ${userId}) select l.id, case when r1.eventId is not null then True else False end as registered, case when r2.eventId is not null then True else False end as bookmarked from  events as l left join userregisteredevents as r1 on l.id = r1.eventId left join userbookmarkedevents as r2 on l.id = r2.eventId where (case when r1.eventId is not null then True else False end) = True;`,
       {
         type: QueryTypes.SELECT,
       }
@@ -139,7 +139,7 @@ const getBookmarkedEventList = async (req, res) => {
   try {
     const userId = req.user.id;
     const events = await sequelize.query(
-      `with userregisteredevents as (select * from registerevents where userId = ${userId}), userbookmarkedevents as ( select * from bookmarkevents where userId = ${userId}) select l.id, case when r1.eventId is not null then True else False end as registered, case when r2.eventId is not null then True else False end as bookmarked from  events as l left join userregisteredevents as r1 on l.id = r1.eventId left join userbookmarkedevents as r2 on l.id = r2.eventId where (case when r2.eventId is not null then True else False end) = True;`,
+      `with userregisteredevents as (select * from registerEvents where userId = ${userId}), userbookmarkedevents as ( select * from bookmarkEvents where userId = ${userId}) select l.id, case when r1.eventId is not null then True else False end as registered, case when r2.eventId is not null then True else False end as bookmarked from  events as l left join userregisteredevents as r1 on l.id = r1.eventId left join userbookmarkedevents as r2 on l.id = r2.eventId where (case when r2.eventId is not null then True else False end) = True;`,
       {
         type: QueryTypes.SELECT,
       }
