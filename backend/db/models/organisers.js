@@ -15,8 +15,7 @@ Organiser.init(
     },
     name: {
       type: DataTypes.STRING,
-      // allowNull: false,
-      allowNull: true,
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
@@ -60,8 +59,7 @@ Organiser.init(
     },
     college: {
       type: DataTypes.STRING,
-      // allowNull: false,
-      allowNull: true,
+      allowNull: false,
     },
     collegeLocation: {
       type: DataTypes.STRING,
