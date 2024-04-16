@@ -42,7 +42,7 @@ export const login = async (req, res) => {
 
 export const register = async (req, res) => {
   try {
-    const { email, password, name, college } = req.body;
+    const { email, password, name, about } = req.body;
     const old = await Organiser.findOne({
       where: { email },
     });
@@ -53,7 +53,7 @@ export const register = async (req, res) => {
       email,
       password,
       name,
-      college,
+      about
     });
     const token = jwt.sign(
       {

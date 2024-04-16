@@ -45,30 +45,28 @@ Organiser.init(
     },
     profilePic: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+      defaultValue:
+        "https://simplyilm.com/wp-content/uploads/2017/08/temporary-profile-placeholder-1.jpg",
+    },
+    coverPic: {
+      type: DataTypes.STRING,
+      allowNull: true,
       defaultValue:
         "https://simplyilm.com/wp-content/uploads/2017/08/temporary-profile-placeholder-1.jpg",
     },
     about: {
       type: DataTypes.TEXT("long"),
-      allowNull: true,
+      allowNull: false,
     },
     website: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    college: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    collegeLocation: {
+    location: {
       type: DataTypes.STRING,
       allowNull: true,
-    },
-    collegeWebsite: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
+    }
   },
   {
     sequelize,
